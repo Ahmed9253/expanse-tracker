@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111714" />
+    <title>Expense Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="page-header">
+        <div class="header-copy">
+          <p class="eyebrow">YOUR MONEY, IN ONE PLACE</p>
+          <h1>Expense tracker</h1>
+          <p class="page-description">A simple view of what comes in and what goes out.</p>
+        </div>
+      </header>
+
+      <section class="overview" aria-labelledby="balance-heading">
+        <div class="balance-card">
+          <div class="balance-card-top">
+            <div>
+              <p class="card-label">TOTAL BALANCE</p>
+              <h2 id="balance-heading" class="balance-value">Rs 0.00</h2>
+            </div>
+            <span class="balance-icon" aria-hidden="true">↗</span>
+          </div>
+          <p class="balance-caption">Your income minus your expenses</p>
+        </div>
+        <div class="summary-card income-card">
+          <span class="summary-icon" aria-hidden="true">＋</span>
+          <div>
+            <p class="card-label">INCOME</p>
+            <p id="income-total" class="summary-value">Rs 0.00</p>
+          </div>
+        </div>
+        <div class="summary-card expense-card">
+          <span class="summary-icon" aria-hidden="true">−</span>
+          <div>
+            <p class="card-label">EXPENSES</p>
+            <p id="expense-total" class="summary-value">Rs 0.00</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Manage transactions">
+        <section class="transactions-panel" aria-labelledby="transactions-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">YOUR ACTIVITY</p>
+              <h2 id="transactions-heading">Transactions</h2>
+            </div>
+            <span id="transaction-count" class="transaction-count">0 entries</span>
+          </div>
+          <ul id="transactions-list" class="transactions-list" aria-live="polite">
+            <!-- Transaction rows are rendered here. -->
+          </ul>
+        </section>
+
+        <section class="form-panel" aria-labelledby="form-heading">
+          <div class="section-heading form-heading">
+            <div>
+              <p class="eyebrow">KEEP IT UP TO DATE</p>
+              <h2 id="form-heading">Add a transaction</h2>
+            </div>
+          </div>
+          <form id="transaction-form" novalidate>
+            <div class="form-field">
+              <label for="transaction-description">Description</label>
+              <input
+                type="text"
+                id="transaction-description"
+                name="description"
+                placeholder="e.g. Grocery shopping"
+                maxlength="80"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="form-field">
+              <label for="transaction-amount">Amount</label>
+              <div class="amount-input-wrap">
+                <span aria-hidden="true">Rs</span>
+                <input
+                  type="number"
+                  id="transaction-amount"
+                  name="amount"
+                  placeholder="0.00"
+                  step="0.01"
+                  inputmode="decimal"
+                  required
+                />
+              </div>
+              <p class="field-hint">Use a minus sign for an expense, like -850.</p>
+            </div>
+            <p id="form-feedback" class="form-feedback" role="alert" aria-live="polite"></p>
+            <button class="submit-button" type="submit">
+              <span aria-hidden="true">＋</span> Add transaction
+            </button>
+          </form>
+          <p class="privacy-note"><span aria-hidden="true">●</span> Your entries are saved on this device.</p>
+        </section>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
